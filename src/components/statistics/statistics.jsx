@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 // import PropTypes from 'prop-types';
 import css from './statistics.module.css';
 import {FeedbackStatistic} from './feedbackStatistic';
@@ -10,7 +10,7 @@ import {FeedbackButtons} from './feedbackButtons'
 //   })).isRequired
 // }
 
-export class Statistics extends React.Component {
+export class Statistics extends Component {
 
   // ============= Якщо нічого не прийшло в Props =============
   static defaultProps = {
@@ -50,6 +50,15 @@ export class Statistics extends React.Component {
       }));
   }
 
+  countTotalFeedback() {
+    return (+this.state.good + +this.state.neutral + +this.state.bad);
+  }
+
+  countPositiveFeedbackPercentage() {
+    let total = +this.state.good + +this.state.neutral + +this.state.bad;
+    return Math.round((this.state.good/total)*100)
+  }
+
 
   render() {
     return (
@@ -69,7 +78,11 @@ export class Statistics extends React.Component {
           good = {this.state.good}
           neutral = {this.state.neutral}
           bad = {this.state.bad}
-        />)}
+          total = {this.countTotalFeedback()}
+          positive = {this.countPositiveFeedbackPercentage()}
+        />
+        
+        )}
       
     </div> 
       )

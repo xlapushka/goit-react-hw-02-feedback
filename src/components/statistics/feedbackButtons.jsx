@@ -8,6 +8,7 @@ import css from './statistics.module.css';
 // }
 
 export function FeedbackButtons({handlePlusGood, handlePlusNeutral, handlePlusBad}) {
+  
   return (
   <ul className={css.feedbackList}>
     <li className={css.feedbackLi}>
