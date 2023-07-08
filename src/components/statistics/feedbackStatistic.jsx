@@ -11,7 +11,6 @@ FeedbackStatistic.propTypes = {
 }
 
 export function FeedbackStatistic({good, neutral, bad, total, positive}) {
-  console.log(total);
   // let total = good + neutral + bad;
   // console.log(total);
   return (

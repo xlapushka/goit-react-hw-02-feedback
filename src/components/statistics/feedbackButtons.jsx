@@ -7,18 +7,18 @@ import css from './statistics.module.css';
 //   handlePlusBad : 
 // }
 
-export function FeedbackButtons({handlePlusGood, handlePlusNeutral, handlePlusBad}) {
+export function FeedbackButtons({onLeaveFeedback}) {
   
   return (
   <ul className={css.feedbackList}>
     <li className={css.feedbackLi}>
-      <button type='button' className={css.feedbackButton} onClick={handlePlusGood} name="good">👍 Good</button>
+      <button type='button' className={css.feedbackButton} onClick={onLeaveFeedback} name="good">👍 Good</button>
     </li>
     <li className={css.feedbackLi}>
-      <button type='button' className={css.feedbackButton} onClick={handlePlusNeutral}>😐 Neutral</button>
+      <button type='button' className={css.feedbackButton} onClick={onLeaveFeedback} name="neutral">😐 Neutral</button>
     </li >
     <li className={css.feedbackLi}>
-      <button type='button' className={css.feedbackButton} onClick={handlePlusBad}>🙅‍♂️ Bad</button>
+      <button type='button' className={css.feedbackButton} onClick={onLeaveFeedback} name="bad">🙅‍♂️ Bad</button>
     </li>
   </ul>
   )    

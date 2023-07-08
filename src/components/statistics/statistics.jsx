@@ -2,28 +2,16 @@ import React, {Component} from 'react';
 // import PropTypes from 'prop-types';
 import css from './statistics.module.css';
 import {FeedbackStatistic} from './feedbackStatistic';
-import {FeedbackButtons} from './feedbackButtons'
+import {FeedbackButtons} from './feedbackButtons';
 
-// Statistics.propTypes = {
-//   friends : PropTypes.arrayOf(PropTypes.shape({
-//     id : PropTypes.string.isRequired
-//   })).isRequired
-// }
 
 export class Statistics extends Component {
-
   // ============= Якщо нічого не прийшло в Props =============
-  static defaultProps = {
-    good : 0,
-    neutral : 0,
-    bad : 0
-  }
-
-  
-
-  // static propTypes ={
-
-  // }
+  // static defaultProps = {
+  //   good : 0,
+  //   neutral : 0,
+  //   bad : 0
+  // } 
 
   state = {
     good : 0,
@@ -31,22 +19,15 @@ export class Statistics extends Component {
     bad : 0
   }
 
-  handlePlusGood = (e) => {
+  // static propTypes ={
 
-    this.setState(prevState => ({
-      good : prevState.good +1
-      }));
-  }
+  // }
 
-  handlePlusNeutral = () => {
-    this.setState(prevState => ({
-      neutral : prevState.neutral +1
-      }));
-  }
 
-  handlePlusBad = () => {
+  onLeaveFeedback = (e) => {
+    let option = e.target.name;
     this.setState(prevState => ({
-      bad : prevState.bad +1
+      [option] : prevState[option] +1
       }));
   }
 
@@ -62,17 +43,22 @@ export class Statistics extends Component {
 
   render() {
     return (
+
     <div className={css.statistics}>
       <div className={css.feedbacks}>
         <h1>Please leave us your feedback</h1>
-  
+        
+{/* ================= <FeedbackOptions options={} onLeaveFeedback={}> ===============   */}
       <FeedbackButtons 
-        handlePlusGood = {this.handlePlusGood} 
-        handlePlusNeutral = {this.handlePlusNeutral} 
-        handlePlusBad = {this.handlePlusBad}
+        onLeaveFeedback = {this.onLeaveFeedback} 
         />
       </div>
-  
+
+      {((this.state.good === 0) && (this.state.neutral === 0) && (this.state.bad === 0)) && 
+        <p>There is no feedback</p>
+      }
+
+ {/* ============= <Statistics good={} neutral={} bad={} total={} positivePercentage={}> =====================  */}
       {(((this.state.good !== 0) || (this.state.neutral !== 0) || (this.state.bad !== 0)) && 
         <FeedbackStatistic 
           good = {this.state.good}
@@ -81,9 +67,7 @@ export class Statistics extends Component {
           total = {this.countTotalFeedback()}
           positive = {this.countPositiveFeedbackPercentage()}
         />
-        
         )}
-      
     </div> 
       )
   }
