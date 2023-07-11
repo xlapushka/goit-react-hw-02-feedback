@@ -11,7 +11,7 @@ export function FeedbackButtons({ options, onLeaveFeedback }) {
       {options.map((option) => {
         let i = options.indexOf(option);
         return (
-          <li>
+          <li key={i}>
             <button
               type="button"
               className={css.feedbackButton}
