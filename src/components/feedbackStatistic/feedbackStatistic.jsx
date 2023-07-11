@@ -1,14 +1,6 @@
 
 import PropTypes from 'prop-types';
-import css from './statistics.module.css';
-
-FeedbackStatistic.propTypes = {
-  good : PropTypes.number,
-  neutral : PropTypes.number,
-  bad : PropTypes.number,
-  total : PropTypes.number,
-  positive : PropTypes.number,
-}
+import css from '../styles.module.css';
 
 export function FeedbackStatistic({good, neutral, bad, total, positive}) {
   // let total = good + neutral + bad;
@@ -16,13 +8,13 @@ export function FeedbackStatistic({good, neutral, bad, total, positive}) {
   return (
     <div>
       <ul className={css.feedbackStatistic}>
-        <li className={css.feedbackStatisticGood}>
+        <li>
           <p><span>{good}</span> :good</p>
         </li>
-        <li className={css.feedbackStatisticNeutral}>
+        <li>
           <p><span>{neutral}</span> :neutral</p>
         </li>
-        <li className={css.feedbackStatisticBad}>
+        <li>
           <p><span>{bad}</span> :bad</p>
         </li>
       </ul>
@@ -37,3 +29,11 @@ export function FeedbackStatistic({good, neutral, bad, total, positive}) {
     </div>  
   )    
 }
+
+FeedbackStatistic.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positive: PropTypes.number.isRequired,
+};
