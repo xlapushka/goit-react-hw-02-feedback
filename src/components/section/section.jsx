@@ -14,6 +14,6 @@ export const Section = ({title, children}) => {
 }
 
 Section.propTypes = {
-  title : PropTypes.string,
-  children : PropTypes.node.isRequired
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLeaveFeedback : PropTypes.func.isRequired
 }

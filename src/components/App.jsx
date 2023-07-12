@@ -64,11 +64,11 @@ export class App extends Component {
   }
 };
 
-App.propTypes = {
-  good: PropTypes.number,
-  neutral: PropTypes.number,
-  bad: PropTypes.number,
-};
+// App.propTypes = {
+//   good: PropTypes.number,
+//   neutral: PropTypes.number,
+//   bad: PropTypes.number,
+// };
 
 
 // export const App = () => {
